@@ -13,11 +13,12 @@ print(instructions)
 commands = {
     # Remove the parentheses to stop python from running them upon definition.
     "show_todos": todoapp.show_todo_list,  
-    "add_task": todoapp.add_task, 
-    "edit_task": todoapp.edit_task,
-    "finish_task": todoapp.finish_task, 
-    "delete_task": todoapp.delete_task,
-    "clear_todo_list": todoapp.clear_todos
+    "add": todoapp.add_task, 
+    "edit": todoapp.edit_task,
+    "finish": todoapp.finish_task,
+    "uncheck": todoapp.uncheck_task,
+    "delete": todoapp.delete_task,
+    "clear_todos": todoapp.clear_todos
     }
 
 # At first, show the to do list

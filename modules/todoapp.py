@@ -9,7 +9,8 @@ from modules.helper_functions import check_for_errors, check_quit_protocol
 class ToDoApp():
     """A simple CLI representation of a todoapp."""
 
-    def __init__(self):
+    def __init__(self, filename="data/todos.json"):
+        self.filename = filename
         self.tasks = []
         self.load()
     
@@ -20,7 +21,7 @@ class ToDoApp():
                 status = '✔' if task.completed else '✘'
                 print(f"{task.id}. {task.title} [{status}]")
         else:
-            print("______No tasks yet______")
+            print("\n______No tasks yet______")
 
     def add_task(self):
         """Add a task to the to do list."""
@@ -58,8 +59,6 @@ class ToDoApp():
         print(f"EDITED TO: {edit}")
 
     def finish_task(self):
-        """Move task at index:task_number from to do list to completed tasks."""
-
         # Check for valid input using check_for_errors function. 
         question = "Enter the id of the task you finished: "
         id = check_for_errors(question, self.tasks)
@@ -69,6 +68,19 @@ class ToDoApp():
             if task.id == id:
                 print(f"FINISHED TASK: {task.title}")
                 task.completed = True
+                break
+
+        self.save()
+    
+    def uncheck_task(self):
+        # Check for valid input using check_for_errors function. 
+        question = "Enter the id of the task you need unchecked: "
+        id = check_for_errors(question, self.tasks)
+
+        for task in self.tasks:
+            if task.id == id:
+                print(f"UNCHECKED TASK: {task.title}")
+                task.completed = False
                 break
 
         self.save()
@@ -97,14 +109,14 @@ class ToDoApp():
     
     # Saving data through json serialization 
     def save(self):
-        with open("todos.json", "w") as f:
+        with open(self.filename, "w") as f:
             json.dump([task.to_dict() for task in self.tasks], f)
 
     # Retrieving data through deserialization
     def load(self):
-        path = Path("todos.json")
+        path = Path(self.filename)
         if path.exists():
-            with open("todos.json", "r") as f:
+            with open(self.filename, "r") as f:
                 try:
                     data = json.load(f)
                 except json.JSONDecodeError:
