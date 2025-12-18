@@ -5,24 +5,21 @@ A simple command-line interface (CLI) to-do application to help you manage tasks
 ## Features
 
 - Add, edit, remove, and list tasks
-- Mark tasks as completed or uncheck them
-- Clear all tasks or completed tasks
+- Mark tasks as completed
+- Clear all tasks
 - Save tasks persistently using JSON files
 - User-friendly CLI interface
 
 ## Project Structure
 
 ```
-retodoapp/
-├── lists/
-│   ├── completed_tasks.json
-│   ├── todolist.json
+todoapp/
+├── data/
+│   ├── todos.json
 ├── modules/
-│   ├── extensions.py
-│   ├── lists.py
+│   ├── helper_functions.py
+│   ├── task.py
 │   ├── todoapp.py
-├── test_lists.py
-├── test_todoapp.py
 ├── run.py
 ```
 
@@ -31,13 +28,6 @@ retodoapp/
 ```sh
 git clone https://github.com/Samuel-Belay-Abebe/CLI_ToDoApp.git
 cd CLI_ToDoApp
-```
-
-### Dependencies
-Ensure you have Python installed. You can install required dependencies with:
-
-```sh
-pip install -r requirements.txt
 ```
 
 ## Usage
@@ -50,15 +40,13 @@ python run.py
 
 ### Available Commands
 
-- `add_task` - Add a new task
-- `edit_task` - Edit an existing task
-- `delete_task` - Remove a task
-- `show_todo_list` - Show all tasks
-- `show_completed_tasks` - Show completed tasks
-- `finish_task` - Mark a task as completed
-- `uncheck_task` - Move a completed task back to the to-do list
-- `clear_todo_list` - Remove all tasks
-- `clear_completed_tasks` - Remove all completed tasks
+- `add` - Add a new task
+- `edit` - Edit an existing task
+- `delete` - Remove a task
+- `show` - Show all tasks
+- `finish` - Mark a task as completed
+- `uncheck` - Mark a task as incomplete
+- `clear_todos` - Remove all tasks
 - `show_commands` - Display available commands
 
 ## Example
@@ -71,8 +59,6 @@ ENTER 'show_commands' TO SHOW COMMANDS YOU CAN USE.
 _ _ _ To Do List _ _ _
 * * NO TASKS HERE * * *
 
-_ _ _ Completed Tasks _ _ _
-* * NO TASKS HERE * * *
 
 Enter command: add_task
 Enter the task you want to add: Buy groceries
@@ -87,13 +73,9 @@ _ _ _ To Do List _ _ _
 * * NO TASKS HERE * * *
 ```
 
-## Testing
+## Handling serialization and deserialization
+A 'Task' object with built in 'to_dict' and 'from_dict' methods which handle conversion between object to dictionary and vice-versa. This methods aid in serialization and deserialization.
 
-The application includes unit tests. To run the tests, execute:
-
-```sh
-pytest test_todoapp.py test_lists.py
-```
 
 ## Contributing
 
