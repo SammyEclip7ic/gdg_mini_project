@@ -64,13 +64,8 @@ Enter command: add_task
 Enter the task you want to add: Buy groceries
 ADDED TASK: Buy groceries
 _ _ _ To Do List _ _ _
-1. Buy groceries
+1. Buy groceries ✔
 
-Enter command: finish_task
-Enter the number of the task you finished: 1
-FINISHED TASK: Buy groceries
-_ _ _ To Do List _ _ _
-* * NO TASKS HERE * * *
 ```
 
 ## Handling serialization and deserialization
