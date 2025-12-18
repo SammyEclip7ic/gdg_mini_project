@@ -23,7 +23,6 @@ commands = {
 # At first, show the to do list
 todoapp.show_todo_list()
 
-
 while True:
     selected_command = input("\nEnter command: ")
     if selected_command in commands:

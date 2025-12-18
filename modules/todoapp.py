@@ -17,7 +17,8 @@ class ToDoApp():
         """Show the to do list."""
         if self.tasks:
             for task in self.tasks:
-                print(task.id, task.title, task.completed)
+                status = '✔' if task.completed else '✘'
+                print(f"{task.id}. {task.title} [{status}]")
         else:
             print("______No tasks yet______")
 
@@ -67,7 +68,7 @@ class ToDoApp():
         for task in self.tasks:
             if task.id == id:
                 print(f"FINISHED TASK: {task.title}")
-                self.tasks.remove(task)
+                task.completed = True
                 break
 
         self.save()

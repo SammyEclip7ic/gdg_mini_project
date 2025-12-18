@@ -1,3 +1,5 @@
+# Task object that acts as a model for a task
+
 class Task:
     def __init__(self, id, title, completed):
         self.id = id
